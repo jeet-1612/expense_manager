@@ -60,7 +60,6 @@ class ExpenseController extends Controller
 
         // Get paginated results
         $expenses = $query->paginate(10);
-        dd($expenses);
         
         // Get totals
         $totalExpenses = Expense::where('user_id', $userId)->sum('amount');
