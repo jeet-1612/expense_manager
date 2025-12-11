@@ -25,9 +25,6 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
-    // Expenses
-    Route::resource('expenses', ExpenseController::class);
-    
     // Categories
     Route::resource('categories', CategoryController::class)->except(['show']);
 
@@ -36,9 +33,14 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Extra routes for statistics and export
+    // Extra routes for statistics and 
     Route::get('/expenses/statistics', [ExpenseController::class, 'statistics'])->name('expenses.statistics');
+
+    // Export
     Route::get('/expenses/export', [ExpenseController::class, 'export'])->name('expenses.export');
+
+    // Expenses
+    Route::resource('expenses', ExpenseController::class);
 });
 
 Route::post('/login', function () {
